@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Header from "./Header";
-import Footer from "./Footer";
 import Axios from "axios";
 import Note from "./Note";
 import Form from "./Form";
@@ -36,8 +35,6 @@ export default function App() {
           />
         );
       })}
-
-      <Footer />
     </div>
   );
 }
