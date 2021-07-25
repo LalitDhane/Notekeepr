@@ -17,7 +17,7 @@ export default function Form(props) {
   }
   function clickHandler() {
     if (note.title !== "" || note.content !== "") {
-      props.onsubmit(note.title, note.content);
+      props.onsubmit(note);
       setNote({
         title: "",
         content: "",

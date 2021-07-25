@@ -1,24 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import Axios from "axios";
 import Note from "./Note";
 import Form from "./Form";
 
 export default function App() {
   const [data, setData] = useState([]);
+  useEffect(() => {
+    Axios.get("http://localhost:3001/api/notes").then((res) => {
+      setData(res.data);
+    });
+  });
 
-  function saveData(notetitle, notecontent) {
-    setData((prev) => {
-      return [...prev, { title: notetitle, content: notecontent }];
-    });
+  function saveData(note) {
+    Axios.post("http://localhost:3001/api/notes", note);
   }
+
   function deleteData(id) {
-    setData((prev) => {
-      return prev.filter((dataitem, index) => {
-        return index !== id;
-      });
-    });
+    Axios.delete("http://localhost:3001/api/notes/" + id);
   }
+
   return (
     <div>
       <Header />
@@ -29,7 +31,7 @@ export default function App() {
             title={item.title}
             content={item.content}
             key={index}
-            id={index}
+            id={item._id}
             ondelete={deleteData}
           />
         );
