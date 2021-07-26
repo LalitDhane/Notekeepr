@@ -9,6 +9,9 @@ html {
 body {
   background: #eee;
   padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 header {
@@ -84,4 +87,10 @@ header h1 {
   border: none;
   cursor: pointer;
   outline: none;
+}
+
+footer {
+  width: 100vw;
+  height: 1rem;
+  margin-top: auto;
 }

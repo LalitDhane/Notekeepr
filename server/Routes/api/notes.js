@@ -8,10 +8,12 @@ const noteModel = require("../../models/Note");
 //@desc     Get All notes
 //@access   Public
 router.route("/").get(async (req, res) => {
-  noteModel.find({}, (err, result) => {
-    if (err) res.status(400).json("Error: " + err);
-    res.send(result);
-  });
+  try {
+    const result = await noteModel.find({});
+    res.json(result);
+  } catch (error) {
+    res.status(400).json("Error: " + error);
+  }
 });
 
 //@route    POST api/notes
@@ -23,20 +25,20 @@ router.route("/").post(async (req, res) => {
   try {
     await Note.save();
     res.json("note added");
-  } catch {
-    res.status(400).json("Error: " + err);
+  } catch (error) {
+    res.status(400).json("Error: " + error);
   }
 });
 
 //@route    DELETE api/notes/:id
-//@desc     Delete a note
+//@desc     Delete a specific note
 //@access   Public
 router.route("/:id").delete(async (req, res) => {
   try {
     await noteModel.deleteOne({ _id: req.params.id });
     res.json("Deleted Successfully");
-  } catch {
-    res.status(400).json("Error: " + err);
+  } catch (error) {
+    res.status(400).json("Error: " + error);
   }
 });
 
