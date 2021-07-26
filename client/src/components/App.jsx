@@ -7,7 +7,7 @@ import Form from "./Form";
 export default function App() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    Axios.get("http://localhost:3001/api/notes")
+    Axios.get("/api/notes")
       .then((res) => {
         setData(res.data);
       })
@@ -15,15 +15,11 @@ export default function App() {
   });
 
   function saveData(note) {
-    Axios.post("http://localhost:3001/api/notes", note).catch((err) =>
-      console.log(err)
-    );
+    Axios.post("/api/notes", note).catch((err) => console.log(err));
   }
 
   function deleteData(id) {
-    Axios.delete("http://localhost:3001/api/notes/" + id).catch((err) =>
-      console.log(err)
-    );
+    Axios.delete("/api/notes" + id).catch((err) => console.log(err));
   }
 
   return (
