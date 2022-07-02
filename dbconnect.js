@@ -1,10 +1,16 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-mongoose.connect(process.env.DBURL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+(async () => {
+  try {
+    await mongoose.connect(process.env.DBURL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+  } catch (err) {
+    console.log("error : " + err);
+  }
+})();
 
 const connection = mongoose.connection;
 
