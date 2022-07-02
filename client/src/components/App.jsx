@@ -19,7 +19,7 @@ export default function App() {
   }
 
   function deleteData(id) {
-    Axios.delete("/api/notes" + id).catch((err) => console.log(err));
+    Axios.delete("/api/notes/" + id).catch((err) => console.log(err));
   }
 
   return (
