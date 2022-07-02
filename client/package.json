@@ -21,7 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "https://keeprapi.herokuapp.com/",
   "eslintConfig": {
     "extends": [
       "react-app",
