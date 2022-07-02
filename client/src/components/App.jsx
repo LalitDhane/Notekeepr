@@ -7,7 +7,7 @@ import Form from "./Form";
 export default function App() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    Axios.get("/api/notes")
+    Axios.get("https://keeprapi.herokuapp.com/api/notes")
       .then((res) => {
         setData(res.data);
       })
@@ -15,11 +15,15 @@ export default function App() {
   });
 
   function saveData(note) {
-    Axios.post("/api/notes", note).catch((err) => console.log(err));
+    Axios.post("https://keeprapi.herokuapp.com/api/notes", note).catch((err) =>
+      console.log(err)
+    );
   }
 
   function deleteData(id) {
-    Axios.delete("/api/notes/" + id).catch((err) => console.log(err));
+    Axios.delete("https://keeprapi.herokuapp.com/api/notes/" + id).catch(
+      (err) => console.log(err)
+    );
   }
 
   return (
